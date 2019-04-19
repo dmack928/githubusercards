@@ -1,17 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Form :handleGitHubData=handleGitHubData />
+    <CardList :cards=cards />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import Form from './components/Form.vue'
+  import CardList from './components/CardList.vue'
 
 export default {
   name: 'app',
+  data: function() {
+    return {
+      cards: []
+    }
+  },
   components: {
-    HelloWorld
+    Form,
+    CardList
+  },
+  methods: {
+    handleGitHubData(data) {
+      this.cards.push(data)
+    }
   }
 }
 </script>
